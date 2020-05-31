@@ -1,22 +1,14 @@
 package com.setu.biller.controller;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.setu.biller.domain.Customers;
 import com.setu.biller.entity.Amount;
 import com.setu.biller.entity.Bill;
 import com.setu.biller.entity.CustomerBill;
@@ -25,29 +17,16 @@ import com.setu.biller.entity.CustomerIdentifiers;
 import com.setu.biller.entity.ReceiptRequest;
 import com.setu.biller.entity.ReceiptResponse;
 import com.setu.biller.exception.ResourceNotFoundException;
-import com.setu.biller.model.AuthenticationRequest;
-import com.setu.biller.model.AuthenticationResponse;
 import com.setu.biller.repository.CustomerRepository;
-import com.setu.biller.service.impl.AppUserDetailsService;
-import com.setu.biller.util.JwtUtil;
 
 
 
 @RestController
-//@RequestMapping("/bills")
+@RequestMapping("/bills")
 public class CustomerController {
     
 	@Autowired
     private CustomerRepository customerRepository;
-	
-	@Autowired
-	private AuthenticationManager authenticationManager;
-
-	@Autowired
-	private JwtUtil jwtTokenUtil;
-
-	@Autowired
-	private AppUserDetailsService userDetailsService;
 	
 	Logger log = Logger.getLogger(CustomerController.class.getName());
     
